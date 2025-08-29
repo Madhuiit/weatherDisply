@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Weather Display {% endblock %}
+{% block content %}
+  <h1>Weather display</h1>
+  <form method ="POST" action ="/">
+    <div class="form-group">
+        <input type="text" name = "city" id = "city-input" placeholder="Enter a city name " required>
+        <button type="submit">Get Weather </button>
+
+
+    </div>
+
+  </form>
+  {% if weather_data %}
+  <div class ="weather_info">
+    <h2>Weather in {{weather_data.city}}</h2>
+    <p><strong>Temprature:</strong>{{weather_data.temperature}}°C</p>
+    <p><strong>Description</strong>{{weather_data.description}}</p>
+    <p><strong>Humidity:</strong>{{weather_data.humidity}}</p>
+    <img src="http://openweathermap.org/img/wn/{{ weather_data.icon }}.png" alt="Weather icon">
+
+  </div>
+  {% endif %}
+  {% endblock %}
